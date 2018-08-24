@@ -1,0 +1,270 @@
+﻿{
+  "data": {
+    "stops": [
+      {
+        "id": "U3RvcDpIU0w6MTM2MTEwNA==",
+        "name": "Viikinranta",
+        "lat": 60.21836,
+        "lon": 24.98539,
+        "wheelchairBoarding": "NOT_POSSIBLE",
+        "stoptimesWithoutPatterns": [
+          {
+            "scheduledArrival": 79680,
+            "realtimeArrival": 79658,
+            "realtime": true,
+            "realtimeState": "UPDATED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA3OE5fMjAxODA4MTdfTWFfMl8yMTU4",
+              "serviceId": "HSL:1078N_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1078N_20180817_Ma_2_2158",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNzhO",
+                "shortName": "78N"
+              }
+            },
+            "headsign": "Rautatient. via SÃ¶rnÃ¤inen (M)"
+          },
+          {
+            "scheduledArrival": 79860,
+            "realtimeArrival": 79904,
+            "realtime": true,
+            "realtimeState": "UPDATED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTUwNl8yMDE4MDgxN19NYV8xXzIxNTg=",
+              "serviceId": "HSL:1506_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1506_20180817_Ma_1_2158",
+              "route": {
+                "id": "Um91dGU6SFNMOjE1MDY=",
+                "shortName": "506"
+              }
+            },
+            "headsign": "Meilahti via Pasila as."
+          },
+          {
+            "scheduledArrival": 80160,
+            "realtimeArrival": 80147,
+            "realtime": true,
+            "realtimeState": "UPDATED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA1N18yMDE4MDgxN19NYV8xXzIxNTk=",
+              "serviceId": "HSL:1057_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1057_20180817_Ma_1_2159",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNTc=",
+                "shortName": "57"
+              }
+            },
+            "headsign": "Munkkiniemi via Ruskeasuo"
+          },
+          {
+            "scheduledArrival": 80340,
+            "realtimeArrival": 80340,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA3MV8yMDE4MDgxN19NYV8yXzIyMDU=",
+              "serviceId": "HSL:1071_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1071_20180817_Ma_2_2205",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNzE=",
+                "shortName": "71"
+              }
+            },
+            "headsign": "Rautatientori via SÃ¶rnÃ¤inen(M)"
+          },
+          {
+            "scheduledArrival": 80880,
+            "realtimeArrival": 80880,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA3OE5fMjAxODA4MTdfTWFfMl8yMjE4",
+              "serviceId": "HSL:1078N_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1078N_20180817_Ma_2_2218",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNzhO",
+                "shortName": "78N"
+              }
+            },
+            "headsign": "Rautatient. via SÃ¶rnÃ¤inen (M)"
+          },
+          {
+            "scheduledArrival": 81480,
+            "realtimeArrival": 81480,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA3MV8yMDE4MDgxN19NYV8yXzIyMjU=",
+              "serviceId": "HSL:1071_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1071_20180817_Ma_2_2225",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNzE=",
+                "shortName": "71"
+              }
+            },
+            "headsign": "Rautatientori via SÃ¶rnÃ¤inen(M)"
+          },
+          {
+            "scheduledArrival": 81600,
+            "realtimeArrival": 81600,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTUwNl8yMDE4MDgxN19NYV8xXzIyMjg=",
+              "serviceId": "HSL:1506_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1506_20180817_Ma_1_2228",
+              "route": {
+                "id": "Um91dGU6SFNMOjE1MDY=",
+                "shortName": "506"
+              }
+            },
+            "headsign": "Meilahti via Pasila as."
+          },
+          {
+            "scheduledArrival": 81960,
+            "realtimeArrival": 81960,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA1N18yMDE4MDgxN19NYV8xXzIyMjk=",
+              "serviceId": "HSL:1057_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1057_20180817_Ma_1_2229",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNTc=",
+                "shortName": "57"
+              }
+            },
+            "headsign": "Munkkiniemi via Ruskeasuo"
+          },
+          {
+            "scheduledArrival": 82080,
+            "realtimeArrival": 82080,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA3OE5fMjAxODA4MTdfTWFfMl8yMjM4",
+              "serviceId": "HSL:1078N_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1078N_20180817_Ma_2_2238",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNzhO",
+                "shortName": "78N"
+              }
+            },
+            "headsign": "Rautatient. via SÃ¶rnÃ¤inen (M)"
+          },
+          {
+            "scheduledArrival": 82680,
+            "realtimeArrival": 82680,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA3MV8yMDE4MDgxN19NYV8yXzIyNDU=",
+              "serviceId": "HSL:1071_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1071_20180817_Ma_2_2245",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNzE=",
+                "shortName": "71"
+              }
+            },
+            "headsign": "Rautatientori via SÃ¶rnÃ¤inen(M)"
+          },
+          {
+            "scheduledArrival": 83280,
+            "realtimeArrival": 83280,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA3OE5fMjAxODA4MTdfTWFfMl8yMjU4",
+              "serviceId": "HSL:1078N_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1078N_20180817_Ma_2_2258",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNzhO",
+                "shortName": "78N"
+              }
+            },
+            "headsign": "Rautatient. via SÃ¶rnÃ¤inen (M)"
+          },
+          {
+            "scheduledArrival": 83400,
+            "realtimeArrival": 83400,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTUwNl8yMDE4MDgxN19NYV8xXzIyNTg=",
+              "serviceId": "HSL:1506_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1506_20180817_Ma_1_2258",
+              "route": {
+                "id": "Um91dGU6SFNMOjE1MDY=",
+                "shortName": "506"
+              }
+            },
+            "headsign": "Meilahti via Pasila as."
+          },
+          {
+            "scheduledArrival": 83700,
+            "realtimeArrival": 83700,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA1N18yMDE4MDgxN19NYV8xXzIyNTk=",
+              "serviceId": "HSL:1057_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1057_20180817_Ma_1_2259",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNTc=",
+                "shortName": "57"
+              }
+            },
+            "headsign": "Munkkiniemi via Ruskeasuo"
+          },
+          {
+            "scheduledArrival": 83820,
+            "realtimeArrival": 83820,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA3MV8yMDE4MDgxN19NYV8yXzIzMDU=",
+              "serviceId": "HSL:1071_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1071_20180817_Ma_2_2305",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNzE=",
+                "shortName": "71"
+              }
+            },
+            "headsign": "Rautatientori via SÃ¶rnÃ¤inen(M)"
+          },
+          {
+            "scheduledArrival": 84480,
+            "realtimeArrival": 84480,
+            "realtime": false,
+            "realtimeState": "SCHEDULED",
+            "trip": {
+              "id": "VHJpcDpIU0w6MTA3OE5fMjAxODA4MTdfTWFfMl8yMzE4",
+              "serviceId": "HSL:1078N_20180817_20180930_Ma",
+              "tripShortName": null,
+              "gtfsId": "HSL:1078N_20180817_Ma_2_2318",
+              "route": {
+                "id": "Um91dGU6SFNMOjEwNzhO",
+                "shortName": "78N"
+              }
+            },
+            "headsign": "Rautatient. via SÃ¶rnÃ¤inen (M)"
+          }
+        ]
+      }
+    ]
+  }
+}
