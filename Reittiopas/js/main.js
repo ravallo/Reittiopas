@@ -1,4 +1,4 @@
-﻿var noOfResults = 5;
+﻿var noOfResults = 10;
 var noOfCols = 6;
 var tbl_body = document.createElement("tbody");
 var now = new Date();
@@ -51,8 +51,11 @@ function timeDiff(msecs) {
 
 $(document).ready(function () {
 
-    $('#aikataulu').DataTable({
+    var table = $('#aikataulu').DataTable({
+        "paging": false,
         "processing": true,
+        "searching": false,
+        "order": [[3, "asc"]],
         "ajax": {
             url: 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql',
             type: 'post',
@@ -67,26 +70,36 @@ $(document).ready(function () {
         },
         'columns': [
             {
+                title: "Numero",
                 data: "trip.route.shortName"
             },
             {
+                title: "Määränpää",
                 data: "headsign"
             },
             {
+                title: "Aikataulu",
                 data: "scheduledArrival", 
                 render: function (data, type, row) { return $.format.date(hslToJDate(data), "HH:mm:ss") }
             },
             {
+                title: "Todellinen",
                 data: "realtimeArrival",
                 render: function (data, type, row) { return $.format.date(hslToJDate(data), "HH:mm:ss") }
+            },
+            {
+                title: "Erotus",
+                data: null,
+                render: function (data, type, row) { return timeDiff(hslToJDate(row.realtimeArrival) - hslToJDate(row.scheduledArrival)) }
+            },
+            {
+                title: "Aikaa",
+                data: null,
+                render: function (data, type, row) { return timeDiff(hslToJDate(row.realtimeArrival) - now) }
             }
-            /*						{ "data": '$.format.date(hslToJDate(scheduledArrival), "HH:mm:ss")' },
-                                    { "data": '$.format.date(hslToJDate(realtimeArrival), "HH:mm:ss")' },
-                                    { "data": 'timeDiff(hslToJDate(realtimeArrival).getTime()-hslToJDate(scheduledArrival).getTime())' },
-                                    { "data": 'timeDiff(hslToJDate(realtimeArrival).getTime()-now.getTime())' },
-                                    { "data": 'realtimeState' }*/
         ]
     });
-    //console.log(JSON.stringify(debuggy));
-    //$("#div2").html("<p>" + $.format.date(now, "HH:mm:ss") + "</p>");
+
+//    setInterval(function () { table.ajax.reload(null, false); }, 2000);
+
 });
