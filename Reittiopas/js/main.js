@@ -19,6 +19,7 @@ var omaquery = `{
 				id
 				serviceId
 				tripShortName
+                tripHeadsign
 				gtfsId
 				route {
 					id
@@ -32,33 +33,80 @@ var omaquery = `{
 
 function hslToJDate(hslDate) {
     var convertedTime = new Date();
-    convertedTime.setHours(0, 0, hslDate, 0)
+    convertedTime.setHours(0, 0, hslDate, 0);
     return convertedTime;
 }
 
 function timeDiff(msecs) {
-    var milliseconds = parseInt((msecs % 1000) / 100),
-        seconds = parseInt((msecs / 1000) % 60),
-        minutes = parseInt((msecs / (1000 * 60)) % 60),
-        hours = parseInt((msecs / (1000 * 60 * 60)) % 24);
 
-    hours = (hours < 10) ? "0" + hours : hours;
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
+    var milliseconds = parseInt((msecs % 1000) / 100);
+    var seconds = parseInt((msecs / 1000) % 60);
+    var minutes = parseInt((msecs / (1000 * 60)) % 60);
+    var hours = parseInt((msecs / (1000 * 60 * 60)) % 24);
 
-    return hours + ":" + minutes + ":" + seconds;
+    this.negative = (hours < 0 || seconds < 0 || minutes < 0 || milliseconds < 0) ? "-" : "+";
+ 
+    this.hoursOut = (Math.abs(hours) > 0) ? Math.abs(hours) + ":" : "";
+    this.minutesOut = getMinutesOut(minutes, hours);
+    this.secondsOut = getSecondsOut(minutes, seconds);
+    this.all = this.negative + this.hoursOut + this.minutesOut + this.secondsOut;
+    
+    function getMinutesOut(minutes, hours) {
+        var minutesOut;
+        if (Math.abs(minutes) < 10) {
+            if (Math.abs(hours) > 0) {
+                minutesOut = "0" + Math.abs(minutes) + ":";
+            }
+            else {
+                minutesOut = Math.abs(minutes) + ":";
+            }
+        }
+        else if (Math.abs(minutes) >= 10) {
+                minutesOut = Math.abs(minutes);
+        }
+        return minutesOut;
+    }
+
+    function getSecondsOut(minutes, seconds) {
+        var secondsOut;
+        if (Math.abs(minutes) < 10) {
+            if (Math.abs(seconds) < 10) {
+                if (Math.abs(seconds) == 0) {
+                    secondsOut = "00";
+                }
+                else {
+                    secondsOut = "0" + Math.abs(seconds);
+                }
+            }
+            else if (Math.abs(seconds) >= 10) {
+                secondsOut = Math.abs(seconds);
+            }
+        }
+        else {
+            secondsOut = "";
+        }
+        return secondsOut;
+    }
+
+
+//    return this.negative + this.hoursOut + this.minutesOut + this.secondsOut;
 }
+
+
 
 $(document).ready(function () {
 
     var table = $('#aikataulu').DataTable({
         "paging": false,
-        "processing": true,
+        "processing": false,
         "searching": false,
-        "order": [[3, "asc"]],
+        "info": false,
+        "autoWidth": false,
+        "order": [[2, "asc"]],
         "ajax": {
             url: 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql',
             type: 'post',
+            cache: false,
             data: function () {
                 return omaquery;
             },
@@ -71,35 +119,43 @@ $(document).ready(function () {
         'columns': [
             {
                 title: "Numero",
-                data: "trip.route.shortName"
+                data: "trip.route.shortName",
+                render: function (data, type, row) { return ("<span class=\"reitinnumero\">" + data + "</span>") }
             },
             {
                 title: "Määränpää",
-                data: "headsign"
+                data: null, //"trip.tripHeadsign",
+                render: function (data, type, row) { return ("<span class=\"reitinnimi\">" + row.trip.tripHeadsign + "</span><span class=\"kautta\"> - " + (row.headsign).replace(/.*?(?=via)/, "") + "</span>")}
             },
             {
                 title: "Aikataulu",
-                data: "scheduledArrival", 
-                render: function (data, type, row) { return $.format.date(hslToJDate(data), "HH:mm:ss") }
+                data: "realtimeArrival",
+                visible: false
             },
             {
-                title: "Todellinen",
+                title: "Saapuu",
                 data: "realtimeArrival",
-                render: function (data, type, row) { return $.format.date(hslToJDate(data), "HH:mm:ss") }
+                render: function (data, type, row) { return ("<span class=\"saapumisaika\">" + dateFns.format(hslToJDate(data), "HH:mm") + "</span>") }
             },
             {
                 title: "Erotus",
                 data: null,
-                render: function (data, type, row) { return timeDiff(hslToJDate(row.realtimeArrival) - hslToJDate(row.scheduledArrival)) }
+                render: function (data, type, row) {
+                    var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - hslToJDate(row.scheduledArrival));
+                    return ("<span class=\"erotus\">" + timeSpan.all + "</span>");
+                }
             },
             {
                 title: "Aikaa",
                 data: null,
-                render: function (data, type, row) { return timeDiff(hslToJDate(row.realtimeArrival) - now) }
+                render: function (data, type, row) {
+                    var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - new Date());
+                    return ("<span class=\"aikaa min\">" + timeSpan.all + "</span>");
+                }
             }
         ]
     });
 
-//    setInterval(function () { table.ajax.reload(null, false); }, 2000);
+   //setInterval(function () { table.ajax.reload(null, false); }, 1000);
 
 });

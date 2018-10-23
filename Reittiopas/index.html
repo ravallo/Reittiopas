@@ -3,7 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <title>Reittiopas test version</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.css" />-->
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js"></script>
+    <!--    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.js"></script>-->
+    <script type="text/javascript" src="http://cdn.date-fns.org/v1.0.0/date_fns.min.js"></script>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/datatables.js"></script>
@@ -13,10 +22,9 @@
 
 </head>
 <body>
-    <div id="div1"><h2>Pysäkki</h2></div>
-    <div id="div2"></div>
-
-    <table id="aikataulu" class="table"></table>
-
+    <div id="tablecontainer">
+        <div id="div1"><img src="images/hsl.png" /></div>
+        <table id="aikataulu" class="table"></table>
+    </div>
 </body>
 </html>

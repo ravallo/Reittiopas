@@ -1,5 +1,94 @@
-﻿body {
-  /* Uncomment this to enable scrolling and zooming
-  touch-action: manipulation;
-  */
+﻿@font-face {
+    font-family: GothamXNarrowBold;
+    src: url('Gotham/Gotham XNarrow/GothamXNarrow-Bold.otf')
+}
+@font-face {
+    font-family: GothamXNarrow;
+    src: url('Gotham/Gotham XNarrow/GothamXNarrow-Thin.otf')
+}
+@font-face {
+    font-family: GothamRounded;
+    src: url('Gotham/Gotham Rounded/OpenType/GothamRnd-Book.otf')
+}
+
+
+body {
+    background-color: #0062a1;
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: 10px;
+}
+
+#tablecontainer {
+    margin-left: 1em;
+}
+
+thead {
+    border-bottom: 1px solid white;
+}
+
+thead th {
+    text-align: left;
+    font-family: GothamXNarrowBold, sans-serif;
+    font-size: medium;
+}
+/*
+thead th:nth-child(1) {
+    width: 7%;
+}
+
+thead th:nth-child(2) {
+    width: 45%;
+}
+
+thead th:nth-child(3) {
+    width: 15%;
+}
+
+thead th:nth-child(4) {
+    width: 5%;
+}
+
+thead th:nth-child(5) {
+    width: 20%;
+}
+*/
+span.reitinnumero {
+    font-family: GothamXNarrowBold, sans-serif;
+    font-size: xx-large;
+    margin-right: 1em;
+}
+span.reitinnimi {
+    font-family: GothamXNarrowBold, sans-serif;
+    font-size: medium;
+ }
+
+span.kautta {
+    font-family: GothamXNarrow, sans-serif;
+    margin-right: 2em;
+}
+span.saapumisaika {
+    font-family: GothamRounded;
+    font-size: xx-large;
+}
+
+span.erotus {
+    font-family: GothamRounded;
+    font-size: small;
+}
+
+span.aikaa {
+    font-family: GothamRounded;
+    font-size: xx-large;
+}
+
+
+
+.table td {
+    padding: 0;
+    vertical-align: middle;
 }
