@@ -19,8 +19,8 @@ body {
 
 table {
     border-collapse: collapse;
-    width: 90%;
-    margin-left: 10px;
+    width: 95%;
+    margin-left: 5px;
 }
 
 #tablecontainer {
@@ -36,27 +36,36 @@ thead th {
     font-family: GothamXNarrowBold, sans-serif;
     font-size: medium;
 }
-/*
-thead th:nth-child(1) {
-    width: 7%;
-}
 
+thead th:nth-child(1) {
+    width: 15%;
+}
+     
 thead th:nth-child(2) {
-    width: 45%;
+    width: 40%;
 }
 
 thead th:nth-child(3) {
-    width: 15%;
+    width: 10%;
 }
 
 thead th:nth-child(4) {
-    width: 5%;
+        width: 15%;
 }
 
 thead th:nth-child(5) {
-    width: 20%;
+        width: 20%;
 }
-*/
+
+td {
+    padding: 0;
+    vertical-align: top;
+}
+
+tbody td:nth-child(2) {
+    vertical-align: middle;
+}
+ 
 span.reitinnumero {
     font-family: GothamXNarrowBold, sans-serif;
     font-size: xx-large;
@@ -71,14 +80,17 @@ span.kautta {
     font-family: GothamXNarrow, sans-serif;
     margin-right: 2em;
 }
-span.saapumisaika {
+div.saapumisaika {
+    width: 3em;
+    float: left;
     font-family: GothamRounded;
     font-size: xx-large;
 }
 
-span.erotus {
+div.erotus {
     font-family: GothamRounded;
     font-size: small;
+    margin-top: 4px;
 }
 
 span.aikaa {
@@ -88,7 +100,3 @@ span.aikaa {
 
 
 
-.table td {
-    padding: 0;
-    vertical-align: middle;
-}

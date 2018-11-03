@@ -3,13 +3,11 @@ var noOfCols = 6;
 var tbl_body = document.createElement("tbody");
 var now = new Date();
 var debuggy; 
-var omaquery = `{
+var omaquery = '{\n stops(name: "3072") {\n  stoptimesWithoutPatterns(numberOfDepartures: 10) {\n   scheduledArrival\n   realtimeArrival\n   realtime\n   realtimeState\n   trip {\n    id\n    serviceId\n    tripShortName\n    tripHeadsign\n    gtfsId\n    route {\n     id\n     shortName\n    }\n   }\n   headsign\n  }\n }\n}';
+/*    
+    
+    `{
 	stops(name: "3072") {
-		id
-		name
-		lat
-		lon
-		wheelchairBoarding
 		stoptimesWithoutPatterns(numberOfDepartures: ${noOfResults}) {
 			scheduledArrival
 			realtimeArrival
@@ -29,7 +27,7 @@ var omaquery = `{
 			headsign
 		}
 	}
-}`;
+}`;*/
 
 function hslToJDate(hslDate) {
     var convertedTime = new Date();
@@ -40,46 +38,44 @@ function hslToJDate(hslDate) {
 function timeDiff(msecs) {
 
     var milliseconds = parseInt((msecs % 1000) / 100);
-    var seconds = parseInt((msecs / 1000) % 60);
-    var minutes = parseInt((msecs / (1000 * 60)) % 60);
-    var hours = parseInt((msecs / (1000 * 60 * 60)) % 24);
+    var seconds = Math.abs(parseInt((msecs / 1000) % 60));
+    var minutes = Math.abs(parseInt((msecs / (1000 * 60)) % 60));
+    var hours = Math.abs(parseInt((msecs / (1000 * 60 * 60)) % 24));
 
-    this.negative = (hours < 0 || seconds < 0 || minutes < 0 || milliseconds < 0) ? "-" : "+";
+    this.negative = (msecs < 0) ? "-" : "+";
  
-    this.hoursOut = (Math.abs(hours) > 0) ? Math.abs(hours) + ":" : "";
+    this.hoursOut = (hours > 0) ? hours + ":" : "";
     this.minutesOut = getMinutesOut(minutes, hours);
-    this.secondsOut = getSecondsOut(minutes, seconds);
+    this.secondsOut = getSecondsOut(hours, minutes, seconds);
     this.all = this.negative + this.hoursOut + this.minutesOut + this.secondsOut;
+    this.delay = (msecs != 0) ? this.all : "";
+    this.eta = this.hoursOut + this.minutesOut + this.secondsOut;
     
     function getMinutesOut(minutes, hours) {
         var minutesOut;
-        if (Math.abs(minutes) < 10) {
-            if (Math.abs(hours) > 0) {
-                minutesOut = "0" + Math.abs(minutes) + ":";
-            }
-            else {
-                minutesOut = Math.abs(minutes) + ":";
-            }
+        if (minutes == 0 && hours <= 0) {
+            minutesout = "0"
         }
-        else if (Math.abs(minutes) >= 10) {
-                minutesOut = Math.abs(minutes);
+        if (minutes == 0 && hours > 0) {
+            minutesout = "00"
+        }
+        if (minutes < 10 && hours > 0) {
+            minutesOut = "0" + minutes;
+        }
+        else {
+            minutesOut = minutes;
         }
         return minutesOut;
     }
 
-    function getSecondsOut(minutes, seconds) {
+    function getSecondsOut(hours, minutes, seconds) {
         var secondsOut;
-        if (Math.abs(minutes) < 10) {
-            if (Math.abs(seconds) < 10) {
-                if (Math.abs(seconds) == 0) {
-                    secondsOut = "00";
-                }
-                else {
-                    secondsOut = "0" + Math.abs(seconds);
-                }
+        if (minutes < 10 && hours == 0) {
+            if (seconds < 10) {
+                secondsOut = ":0" + seconds;
             }
-            else if (Math.abs(seconds) >= 10) {
-                secondsOut = Math.abs(seconds);
+            if (seconds >= 10) {
+                secondsOut = ":" + seconds;
             }
         }
         else {
@@ -135,14 +131,17 @@ $(document).ready(function () {
             {
                 title: "Saapuu",
                 data: "realtimeArrival",
-                render: function (data, type, row) { return ("<span class=\"saapumisaika\">" + dateFns.format(hslToJDate(data), "HH:mm") + "</span>") }
+                render: function (data, type, row) {
+                 //   var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - hslToJDate(row.scheduledArrival));
+                    return ("<div class=\"saapumisaika\">" + dateFns.format(hslToJDate(row.realtimeArrival), "HH:mm") + "</div>");
+                }
             },
             {
-                title: "Erotus",
+                title: "",
                 data: null,
                 render: function (data, type, row) {
                     var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - hslToJDate(row.scheduledArrival));
-                    return ("<span class=\"erotus\">" + timeSpan.all + "</span>");
+                    return ("<div class=\"erotus\">" + timeSpan.delay + "</div>");
                 }
             },
             {
@@ -150,12 +149,12 @@ $(document).ready(function () {
                 data: null,
                 render: function (data, type, row) {
                     var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - new Date());
-                    return ("<span class=\"aikaa min\">" + timeSpan.all + "</span>");
+                    return ("<span class=\"aikaa min\">" + timeSpan.eta + "</span>");
                 }
             }
         ]
     });
 
-   //setInterval(function () { table.ajax.reload(null, false); }, 1000);
+   setInterval(function () { table.ajax.reload(null, false); }, 1000);
 
 });

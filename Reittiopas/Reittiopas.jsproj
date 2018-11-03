@@ -54,6 +54,9 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>Reittiopas_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>\\192.168.1.172\Shares</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
@@ -219,6 +222,7 @@
     <Content Include="images\Wide310x150Logo.scale-200.png" />
     <Content Include="js\datatables.js" />
     <Content Include="js\graphqlSample.json" />
+    <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\jsonpath-0.8.0.js" />
     <Content Include="js\main.js" />
     <Content Include="css\default.css" />
