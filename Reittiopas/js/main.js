@@ -151,6 +151,23 @@ $(document).ready(function () {
                     var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - new Date());
                     return ("<span class=\"aikaa min\">" + timeSpan.eta + "</span>");
                 }
+            },
+            {
+                title: "",
+                data: null,
+                render: function (data, type, row) {
+                    var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - new Date());
+                    if (timeSpan.minutesOut >= 4 && timeSpan.minutesOut < 8) {
+                        return ('<img src="images/relaxing-walk.png" "alt="Walk" height="30" width="30">');
+                    }
+                    if (timeSpan.minutesOut >= 2 && timeSpan.minutesOut < 4) {
+                        return ('<img src="images/running.png" "alt="Walk" height="27" width="27">');
+                    }
+                    else {
+                        return ("");
+                    }
+                    
+                }
             }
         ]
     });

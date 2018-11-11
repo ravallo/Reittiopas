@@ -212,6 +212,8 @@
     <Content Include="css\Gotham\Gotham\Gotham-XLight.otf" />
     <Content Include="css\Gotham\Gotham\Gotham-XLightItalic.otf" />
     <Content Include="images\hsl.png" />
+    <Content Include="images\relaxing-walk.png" />
+    <Content Include="images\running.png" />
     <Content Include="index.html" />
     <Content Include="images\LockScreenLogo.scale-200.png" />
     <Content Include="images\SplashScreen.scale-200.png" />
