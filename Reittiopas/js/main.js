@@ -1,8 +1,5 @@
-﻿var noOfResults = 10;
-var noOfCols = 6;
+﻿var now = new Date();
 var tbl_body = document.createElement("tbody");
-var now = new Date();
-var debuggy; 
 var omaquery = '{\n stops(name: "3072") {\n  stoptimesWithoutPatterns(numberOfDepartures: 10) {\n   scheduledArrival\n   realtimeArrival\n   realtime\n   realtimeState\n   trip {\n    id\n    serviceId\n    tripShortName\n    tripHeadsign\n    gtfsId\n    route {\n     id\n     shortName\n    }\n   }\n   headsign\n  }\n }\n}';
 /*    
     
@@ -96,6 +93,7 @@ $(document).ready(function () {
         "paging": false,
         "processing": false,
         "searching": false,
+        "ordering": false,
         "info": false,
         "autoWidth": false,
         "order": [[2, "asc"]],
@@ -148,7 +146,7 @@ $(document).ready(function () {
                 title: "Aikaa",
                 data: null,
                 render: function (data, type, row) {
-                    var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - new Date());
+                    var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - now);
                     return ("<span class=\"aikaa min\">" + timeSpan.eta + "</span>");
                 }
             },
@@ -156,12 +154,12 @@ $(document).ready(function () {
                 title: "",
                 data: null,
                 render: function (data, type, row) {
-                    var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - new Date());
-                    if (timeSpan.minutesOut >= 4 && timeSpan.minutesOut < 8) {
-                        return ('<img src="images/relaxing-walk.png" "alt="Walk" height="30" width="30">');
+                    var timeSpan = new timeDiff(hslToJDate(row.realtimeArrival) - now);
+                    if (timeSpan.minutesOut >= 4 && timeSpan.minutesOut < 8 && timeSpan.hoursOut < 1) {
+                        return ('<img src="images/relaxing-walk.png" "alt="Walk" height="27" width="27">');
                     }
-                    if (timeSpan.minutesOut >= 2 && timeSpan.minutesOut < 4) {
-                        return ('<img src="images/running.png" "alt="Walk" height="27" width="27">');
+                    if (timeSpan.minutesOut >= 2 && timeSpan.minutesOut < 4 && timeSpan.hoursOut < 1) {
+                        return ('<img src="images/running.png" "alt="Run" height="26" width="26">');
                     }
                     else {
                         return ("");
@@ -172,6 +170,12 @@ $(document).ready(function () {
         ]
     });
 
-   setInterval(function () { table.ajax.reload(null, false); }, 1000);
+    setInterval(function () {
+        now = new Date();
+        table.rows().invalidate('data').draw();
+        
+    }, 200);
+    setInterval(function () { table.ajax.reload(null, false); }, 10000);
+
 
 });

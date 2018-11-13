@@ -23,6 +23,10 @@ table {
     margin-left: 5px;
 }
 
+img {
+    margin: 5px;
+}
+
 #tablecontainer {
     margin-left: 1em;
 }
