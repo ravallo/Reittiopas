@@ -1,6 +1,12 @@
 ﻿var now = new Date();
 var tbl_body = document.createElement("tbody");
-var omaquery = '{\n stops(name: "3072") {\n  stoptimesWithoutPatterns(numberOfDepartures: 10) {\n   scheduledArrival\n   realtimeArrival\n   realtime\n   realtimeState\n   trip {\n    id\n    serviceId\n    tripShortName\n    tripHeadsign\n    gtfsId\n    route {\n     id\n     shortName\n    }\n   }\n   headsign\n  }\n }\n}';
+var stop = "3072";
+var results = "8";
+/*var omaquery = '{\n stops(name: "3072") {\n  stoptimesWithoutPatterns(numberOfDepartures: 10) {\n   scheduledArrival\n   realtimeArrival\n   realtime\n   realtimeState\n   trip {\n    id\n    serviceId\n    tripShortName\n    tripHeadsign\n    gtfsId\n    route {\n     id\n     shortName\n    }\n   }\n   headsign\n  }\n }\n}';
+*/
+function getStop() { return stop };
+function getResults() { return results };
+
 /*    
     
     `{
@@ -102,6 +108,11 @@ $(document).ready(function () {
             type: 'post',
             cache: false,
             data: function () {
+                var omaquery = '{\n stops(name: "'
+                    + getStop()
+                    + '") {\n  stoptimesWithoutPatterns(numberOfDepartures: '
+                    + getResults()
+                    + ') { \n   scheduledArrival\n   realtimeArrival\n   realtime\n   realtimeState\n   trip { \n    id\n    serviceId\n    tripShortName\n    tripHeadsign\n    gtfsId\n    route { \n     id\n     shortName\n }\n}\n   headsign\n  }\n }\n}';
                 return omaquery;
             },
             headers: {
@@ -170,12 +181,21 @@ $(document).ready(function () {
         ]
     });
 
+    $("#suunta").click(function () {
+        if ($(this).text() == "Länteen") { $(this).text("Itään") } else { $(this).text("Länteen") }; 
+        if (stop == "3072") { stop = "3071" } else { stop = "3072" };
+        table.ajax.reload(null, false);
+    });
+
     setInterval(function () {
         now = new Date();
         table.rows().invalidate('data').draw();
         
     }, 200);
-    setInterval(function () { table.ajax.reload(null, false); }, 10000);
+
+    setInterval(function () {
+        table.ajax.reload(null, false);
+    }, 10000);
 
 
 });
