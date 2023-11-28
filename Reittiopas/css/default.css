@@ -1,5 +1,119 @@
-﻿body {
-  /* Uncomment this to enable scrolling and zooming
-  touch-action: manipulation;
-  */
+﻿@font-face {
+    font-family: GothamXNarrowBold;
+    src: url('Gotham/Gotham XNarrow/GothamXNarrow-Bold.otf')
 }
+@font-face {
+    font-family: GothamXNarrow;
+    src: url('Gotham/Gotham XNarrow/GothamXNarrow-Thin.otf')
+}
+@font-face {
+    font-family: GothamRounded;
+    src: url('Gotham/Gotham Rounded/OpenType/GothamRnd-Book.otf')
+}
+
+
+body {
+    background-color: #0062a1;
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 99%;
+    margin-left: 7px;
+}
+
+img {
+    margin: 5px;
+    margin-left: 0px;
+}
+
+thead {
+    border-bottom: 1px solid white;
+}
+
+thead th {
+    text-align: left;
+    font-family: GothamXNarrowBold, sans-serif;
+    font-size: medium;
+}
+
+thead th:nth-child(1) {
+    width: 15%;
+}
+     
+thead th:nth-child(2) {
+    width: 40%;
+}
+
+thead th:nth-child(3) {
+    width: 10%;
+}
+
+thead th:nth-child(4) {
+        width: 15%;
+}
+
+thead th:nth-child(5) {
+        width: 10%;
+}
+
+thead th:nth-child(6) {
+    width: 10%;
+}
+
+td {
+    padding: 0;
+    vertical-align: top;
+}
+
+tbody td:nth-child(2) {
+    vertical-align: middle;
+}
+ 
+span.reitinnumero {
+    font-family: GothamXNarrowBold, sans-serif;
+    font-size: xx-large;
+    margin-right: 1em;
+}
+span.reitinnimi {
+    font-family: GothamXNarrowBold, sans-serif;
+    font-size: medium;
+ }
+
+span.kautta {
+    font-family: GothamXNarrow, sans-serif;
+    margin-right: 2em;
+}
+div.saapumisaika {
+    width: 3em;
+    float: left;
+    font-family: GothamRounded;
+    font-size: xx-large;
+}
+
+div.erotus {
+    font-family: GothamRounded;
+    font-size: small;
+    margin-top: 4px;
+}
+
+span.aikaa {
+    font-family: GothamRounded;
+    font-size: xx-large;
+}
+
+div#div1 {
+    display: flex;
+    align-items: baseline;
+}
+
+div.suunnanvaihdin {
+    font-family: GothamXNarrowBold, sans-serif;
+    font-size: xx-large;
+    margin: auto 0 auto 30px;
+}
+
+
+
+

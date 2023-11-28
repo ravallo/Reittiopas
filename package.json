@@ -1,0 +1,22 @@
+{
+  "name": "reittiopas",
+  "version": "1.0.0",
+  "description": "Reittiopas test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ravallo/Reittiopas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ravallo/Reittiopas/issues"
+  },
+  "homepage": "https://github.com/ravallo/Reittiopas#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
