@@ -1,6 +1,6 @@
 ﻿var now = new Date();
 var tbl_body = document.createElement("tbody");
-var stop = "3072";
+var stop = "H3072";
 var results = "8";
 /*var omaquery = '{\n stops(name: "3072") {\n  stoptimesWithoutPatterns(numberOfDepartures: 10) {\n   scheduledArrival\n   realtimeArrival\n   realtime\n   realtimeState\n   trip {\n    id\n    serviceId\n    tripShortName\n    tripHeadsign\n    gtfsId\n    route {\n     id\n     shortName\n    }\n   }\n   headsign\n  }\n }\n}';
 */
@@ -104,7 +104,7 @@ $(document).ready(function () {
         "autoWidth": false,
         "order": [[2, "asc"]],
         "ajax": {
-            url: 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql',
+            url: 'https://dev-api.digitransit.fi/routing/v1/routers/hsl/index/graphql?digitransit-subscription-key=ef10532b8b9544839054485c9a6469e7',
             type: 'post',
             cache: false,
             data: function () {
@@ -183,7 +183,7 @@ $(document).ready(function () {
 
     $("#suunta").click(function () {
         if ($(this).text() == "Länteen") { $(this).text("Itään") } else { $(this).text("Länteen") }; 
-        if (stop == "3072") { stop = "3071" } else { stop = "3072" };
+        if (stop == "H3072") { stop = "H3071" } else { stop = "H3072" };
         table.ajax.reload(null, false);
     });
 
